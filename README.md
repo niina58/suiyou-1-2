@@ -1,7 +1,7 @@
 ssh ec2-user@13.220.12.138 -i "C:\Users\ktc\Downloads\kadai.pem"
-
+```
 sudo yum install vim -y
-
+```
 ### vim ~/.vimrc を開いて　
 ```
 set number
