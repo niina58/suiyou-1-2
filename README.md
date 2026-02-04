@@ -2,26 +2,7 @@ ssh ec2-user@13.220.12.138 -i "C:\Users\ktc\Downloads\kadai.pem"
 ```
 sudo yum install vim -y
 ```
-### vim ~/.vimrc を開いて　
-```
-set number
-set expandtab
-set tabstop=2
-set shiftwidth=2
-set autoindent
-```
-## screenのインストール
-```
-sudo yum install screen -y
-screen起動
-screen
-.screenrc
-vim ~/.screenrc
-```
-中身
-```
-hardstatus alwayslastline "%{= bw}%-w%{= wk}%n%t*%{-}%+w"
-```
+
 ## Dockerインストール方法
 ```
 sudo yum install -y docker
@@ -50,17 +31,12 @@ cd public
 ```
 
 
-##ファイル作成
-
-
 
 ## settingに移動
 ```
 cd public
 cd setting
 ```
-
-## settingにファイルを作成
 
 ## DB構築とファイル配置
 ### git cloneでgithubからソースコードを取得します
