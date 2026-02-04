@@ -39,16 +39,6 @@ mkdir dockertest
 cd dockertest
 ```
 
-
-
-## 設定ファイル
-vim compose.yml
-
-
-## 設定ファイルを作成
-vim nginx/conf.d/default.conf
-
-
 ## ディレクトリを作る
 ```
 mkdir public
