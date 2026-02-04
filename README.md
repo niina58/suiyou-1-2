@@ -42,11 +42,11 @@ cd dockertest
 
 
 ## 設定ファイル
-### vim compose.yml
+vim compose.yml
 
 
 ## 設定ファイルを作成
-### vim nginx/conf.d/default.conf
+vim nginx/conf.d/default.conf
 
 
 ## ディレクトリを作る
@@ -54,7 +54,7 @@ cd dockertest
 mkdir public
 mkdir public/setting
 ```
-publicに移動
+### publicに移動
 ```
 cd public
 ```
@@ -62,62 +62,6 @@ cd public
 
 ##ファイル作成
 
-### vim bbs.php
-
-### vim bbsimagetest.php
-
-
-
-###  vim edit_name.php
-
-
-### vim follow.php
-
-
-### vim follow_list.php
-
-
-
-### vim follow_remove.php
-
-
-
-
-### vim follower_list.php
-
-
-### vim index.html
-
-
-
-### vim login.php
-
-
-
-### vim login_finish.php
-
-
-## vim profile.php
-
-
-### vim signup.php
-
-
-### vim signup_finish.php
-
-
-### vim timeline.php
-
-
-### vim timeline_in.php
-
-
-### vim timeline_json.php
-
-### vim timeline_subquery.php
-
-
-### vim users.php
 
 
 ## settingに移動
@@ -128,31 +72,21 @@ cd setting
 
 ## settingにファイルを作成
 
-### vim birthday.php
-
-
-
-
-### vim icon.php
-
-
-### vim index.php
-
-
-
-### vim introduction.php
-
-
-## Dockerfile作成
-
+## DB構築とファイル配置
+### git cloneでgithubからソースコードを取得します
+```
+git clone https://github.com/niina58/suiyou-1-2.git
+```
+```
+cd suiyou-1-2
 dockertestにもどる
 ```
-vim Dockerfile
 ```
-中身
+docker compose build
+docker compose up -d
+```
 
-
-## 必要なSQL
+## 必要なSQL作成
 ```
 docker compose exec mysql mysql example_db
 ```
@@ -204,17 +138,6 @@ ALTER TABLE `users` ADD COLUMN cover_filename TEXT DEFAULT NULL;
 ALTER TABLE `users` ADD COLUMN birthday DATE DEFAULT NULL;
 ```
 
-
-
-### php.ini
-```
-post_max_size = 5M
-upload_max_filesize = 5M
-
-session.save_handler = redis
-session.save_path = "tcp://redis:6379"
-session.gc_maxlifetime = 86400
-```
 
 ## コンテナ起動
 ```
