@@ -2,21 +2,28 @@ ssh ec2-user@13.220.12.138 -i "C:\Users\ktc\Downloads\kadai.pem"
 
 sudo yum install vim -y
 
-vim ~/.vimrc を開いて　
+### vim ~/.vimrc を開いて　
+```
 set number
 set expandtab
 set tabstop=2
 set shiftwidth=2
 set autoindent
-screenのインストール
+```
+## screenのインストール
+```
 sudo yum install screen -y
 screen起動
 screen
 .screenrc
 vim ~/.screenrc
+```
 中身
+```
 hardstatus alwayslastline "%{= bw}%-w%{= wk}%n%t*%{-}%+w"
-Dockerインストール方法
+```
+## Dockerインストール方法
+```
 sudo yum install -y docker
 sudo systemctl start docker
 sudo systemctl enable docker
@@ -25,16 +32,18 @@ Docker Composeインストール方法
 sudo mkdir -p /usr/local/lib/docker/cli-plugins/
 sudo curl -SL https://github.com/docker/compose/releases/download/v2.36.0/docker-compose-linux-x86_64 -o /usr/local/lib/docker/cli-plugins/docker-compose
 sudo chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
-ディレクトリの作成
+```
+## ディレクトリの作成
+```
 mkdir dockertest
 cd dockertest
+```
 
 
 
-
-設定ファイル
-vim compose.yml
-中身
+## 設定ファイル
+### vim compose.yml
+```
 services:
   web:
     image: nginx:latest
@@ -79,11 +88,11 @@ volumes:
 nginxでファイル配信
 mkdir nginx
 mkdir nginx/conf.d
+```
 
-
-設定ファイルを作成
-vim nginx/conf.d/default.conf
-中身
+## 設定ファイルを作成
+### vim nginx/conf.d/default.conf
+```
 server {
     listen       0.0.0.0:80;
     server_name  _;
@@ -102,20 +111,23 @@ server {
         root /var/www/upload;
     }
 }
+```
 
-
-ディレクトリを作る
+## ディレクトリを作る
+```
 mkdir public
 mkdir public/setting
-
+```
 publicに移動
+```
 cd public
+```
 
 
+##ファイル作成
 
-ファイル作成
-
-vim bbs.php
+### vim bbs.php
+```
 <?php
 $dbh = new PDO('mysql:host=mysql;dbname=example_db', 'root', '');
 session_start();
@@ -186,10 +198,11 @@ function bodyFilter (string $body): string
     </dd>
   </dl>
 <?php endforeach ?>
+```
 
 
-
-vim bbsimagetest.php
+### vim bbsimagetest.php
+```
 <?php
 $dbh = new PDO('mysql:host=mysql;dbname=example_db', 'root', '');
 
@@ -414,10 +427,11 @@ if (isset($_POST['name'])) {
   名前の変更処理が完了しました。
 </div>
 <?php endif; ?>
+```
 
 
-
-vim edit_name.php
+###  vim edit_name.php
+```
 <?php
 
 // ########################## セッションの処理ここから
@@ -484,10 +498,11 @@ if (isset($_POST['name'])) {
   名前の変更処理が完了しました。
 </div>
 <?php endif; ?>
+```
 
 
-
-vim follow.php
+### vim follow.php
+```
 <?php
 session_start();
 
@@ -563,11 +578,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // フォームでPOSTした場合�
   </form>
 </div>
 <?php endif; ?>
+```
 
 
 
-
-vim follow_list.php
+### vim follow_list.php
+```
 <?php
 session_start();
 
@@ -613,11 +629,12 @@ $select_sth->execute([
   </li>
   <?php endforeach; ?>
 </ul>
+```
 
 
 
-
-vim follow_remove.php
+### vim follow_remove.php
+```
 <?php
 session_start();
 
@@ -690,11 +707,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // フォームでPOSTした場合�
   </form>
 </div>
 <?php endif; ?>
+```
 
 
 
-
-vim follower_list.php
+### vim follower_list.php
+```
 <?php
 session_start();
 
@@ -739,18 +757,20 @@ $select_sth->execute([
   </li>
   <?php endforeach; ?>
 </ul>
+```
 
 
 
-
-vim index.html
+### vim index.html
+```
 <!DOCTYPE html>
 <h1>Hello world</h1>
+```
 
 
 
-
-vim login.php
+### vim login.php
+```
 <?php
 session_start();
 
@@ -817,11 +837,12 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
   メールアドレスかパスワードが間違っています。
 </div>
 <?php endif; ?>
+```
 
 
 
-
-vim login_finish.php
+### vim login_finish.php
+```
 <?php
 session_start();
 
@@ -859,11 +880,12 @@ $user = $insert_sth->fetch();
   <dt>名前</dt>
   <dd><?= htmlspecialchars($user['name']) ?></dd>
 </dl>
+```
 
 
 
-
-vim profile.php
+## vim profile.php
+```
 <?php
 $user = null;
 if (!empty($_GET['user_id'])) {
@@ -1009,11 +1031,12 @@ if (!empty($_SESSION['login_user_id'])) { // ログインしている場合
     </dd>
   </dl>
 <?php endforeach ?>
+```
 
 
 
-
-vim signup.php
+### vim signup.php
+```
 <?php
 // DBに接続
 $dbh = new PDO('mysql:host=mysql;dbname=example_db', 'root', '');
@@ -1077,19 +1100,21 @@ if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['password
   入力されたメールアドレスは既に使われています。
 </div>
 <?php endif; ?>
+```
 
 
 
-
-vim signup_finish.php
+### vim signup_finish.php
+```
 <h1>会員登録完了</h1>
 
 会員登録が完了しました。<br>
 登録した内容をもとに<a href="/login.php">ログイン</a>してください。
+```
 
 
-
-vim timeline.php
+### vim timeline.php
+```
 <?php
 $dbh = new PDO('mysql:host=mysql;dbname=example_db', 'root', '');
 
@@ -1283,11 +1308,11 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 </script>
+```
 
 
-
-vim timeline_in.php
-
+### vim timeline_in.php
+```
 <?php
 $dbh = new PDO('mysql:host=mysql;dbname=example_db', 'root', '');
 
@@ -1470,11 +1495,11 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 </script>
+```
 
 
-
-vim timeline_json.php
-
+### vim timeline_json.php
+```
 <?php
 $dbh = new PDO('mysql:host=mysql;dbname=example_db', 'root', '');
 
@@ -1532,12 +1557,12 @@ foreach ($select_sth as $entry) {
 header("HTTP/1.1 200 OK");
 header("Content-Type: application/json");
 print(json_encode(['entries' => $result_entries]));
+```
 
 
 
-
-vim timeline_subquery.php
-
+### vim timeline_subquery.php
+```
 <?php
 $dbh = new PDO('mysql:host=mysql;dbname=example_db', 'root', '');
 
@@ -1711,12 +1736,12 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 </script>
+```
 
 
 
-
-vim users.php
-
+### vim users.php
+```
 <?php
 session_start();
 $dbh = new PDO('mysql:host=mysql;dbname=example_db', 'root', '');
@@ -1810,21 +1835,22 @@ if (!empty($_SESSION['login_user_id'])) {
     <hr style="border: none; border-bottom: 1px solid gray;">
   <?php endforeach; ?>
 </body>
+```
 
 
-
-settingに移動
+## settingに移動
+```
 cd public
 cd setting
+```
+
+## settingにファイルを作成
 
 
-settingにファイルを作成
 
 
-
-
-vim birthday.php
-
+## vim birthday.php
+```
 <?php
 session_start();
 
@@ -1871,12 +1897,12 @@ if (isset($_POST['birthday'])) {
   生年月日の変更処理が完了しました。
 </div>
 <?php endif; ?>
+```
 
 
 
-
-vim cover.php
-
+## vim cover.php
+```
 <?php
 session_start();
 
@@ -2003,12 +2029,12 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 </script>
+```
 
 
 
-
-vim icon.php
-
+### vim icon.php
+```
 <?php
 session_start();
 if (empty($_SESSION['login_user_id'])) {
@@ -2118,11 +2144,11 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 </script>
+```
 
 
-
-vim index.php
-
+### vim index.php
+```
 <?php
 session_start();
 if (empty($_SESSION['login_user_id'])) {
@@ -2158,11 +2184,11 @@ $user = $select_sth->fetch();
   <li><a href="./birthday.php">生年月日設定</a></li>
   <li><a href="./introduction.php">自己紹介文設定</a></li>
 </ul>
+```
 
 
-
-vim introduction.php
-
+### vim introduction.php
+```
 <?php
 session_start();
 if (empty($_SESSION['login_user_id'])) {
@@ -2206,18 +2232,18 @@ if (isset($_POST['introduction'])) {
   自己紹介文の設定処理が完了しました。
 </div>
 <?php endif; ?>
+```
 
 
 
-
-Dockerfile作成
+## Dockerfile作成
 
 dockertestにもどる
-
+```
 vim Dockerfile
-
+```
 中身
-
+```
 FROM php:8.4-fpm-alpine AS php
 
 RUN apk add --no-cache autoconf build-base \
@@ -2235,21 +2261,24 @@ RUN docker-php-ext-install pdo_mysql
 RUN install -o www-data -g www-data -d /var/www/upload/image/
 
 RUN echo -e "post_max_size = 5M\nupload_max_filesize = 5M" >> ${PHP_INI_DIR}/php.ini
+```
 
-
-必要なSQL
-
+## 必要なSQL
+```
 docker compose exec mysql mysql example_db
+```
 
-
-create_access_logs.sql
+### create_access_logs.sql
+```
 CREATE TABLE `access_logs` (
   `id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `user_agent` TEXT NOT NULL,
   `remote_ip` TEXT NOT NULL,
   `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP
 );
- create_bbs_entries.sql
+```
+### create_bbs_entries.sql
+```
 CREATE TABLE `bbs_entries` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `user_id` INT UNSIGNED NOT NULL,
@@ -2257,16 +2286,18 @@ CREATE TABLE `bbs_entries` (
   `image_filename` TEXT DEFAULT NULL,
   `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP
 );
-
-create_user_relationships.sql
+```
+### create_user_relationships.sql
+```
 CREATE TABLE `user_relationships` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `followee_user_id` INT UNSIGNED NOT NULL,
   `follower_user_id` INT UNSIGNED NOT NULL,
   `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP
 );
-
-create_users.sql
+```
+### create_users.sql
+```
 CREATE TABLE `users` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `name` TEXT NOT NULL,
@@ -2282,23 +2313,25 @@ ALTER TABLE `users` ADD COLUMN introduction TEXT DEFAULT NULL;
 ALTER TABLE `users` ADD COLUMN cover_filename TEXT DEFAULT NULL;
 
 ALTER TABLE `users` ADD COLUMN birthday DATE DEFAULT NULL;
+```
 
 
 
-
-php.ini
+### php.ini
+```
 post_max_size = 5M
 upload_max_filesize = 5M
 
 session.save_handler = redis
 session.save_path = "tcp://redis:6379"
 session.gc_maxlifetime = 86400
+```
 
-
-コンテナ起動
+## コンテナ起動
+```
 docker compose up -d --build
 docker compose up
-
+```
 ブラウザ確認
 
 http://{パブリック IPv4 アドレス}/signup.php
